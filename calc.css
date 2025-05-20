@@ -1,0 +1,78 @@
+h1 {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+h4 {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+input {
+    font-size: small;
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+
+.circulo-qualificador-leve {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:gray;
+    box-shadow: inset -10px -10px 10px gray, inset 3px 3px 5px #FFF;
+    margin: 4px;
+    float: left;
+}
+
+.circulo-qualificador-medio {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:darkgoldenrod;
+    box-shadow: inset -10px -10px 10px darkgoldenrod, inset 3px 3px 5px #FFF;
+    margin: 4px;
+    float: left;
+}
+
+.circulo-qualificador-grave {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:darkred;
+    box-shadow: inset -10px -10px 10px darkred, inset 3px 3px 5px #FFF;
+    margin: 4px;
+    float: left;
+}
+
+.table-wrapper {
+    height: 250px; 
+    overflow-y: scroll;
+}
+
+.table-wrapper th{
+    position: sticky;
+    background: white;
+    top: 0;
+}
+
+.table>:not(caption)>*>* {
+    padding: .15rem .15rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.help {
+    cursor: help;
+}
+
+#lnkImagem { text-decoration: none; }
