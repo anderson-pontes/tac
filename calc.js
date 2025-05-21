@@ -2,8 +2,9 @@
 const Calc = {
     qualificadores: {
         natureza: ['Culpa Leve', 'Culpa Grave', 'Dolo'],
-        gravidade: ['Baixa', 'Média', 'Alta'], // Corrigido: Média
-        dano: ['Leve', 'Médio', 'Grave'] // Corrigido: Médio
+        gravidade: ['Baixa', 'Média', 'Alta'], 
+        dano: ['Leve', 'Médio', 'Grave'], 
+        repercussao: ['Baixa', 'Média', 'Grave'] 
     },
 
     enquadramentos: [
@@ -101,13 +102,16 @@ const Calc = {
 
         $("#naturezaPontos").val(1);
         $("#gravidadePontos").val(1);
+        $("#repercussaoPontos").val(1);
 
         $("input[name='natureza']").val(1);
         $("input[name='gravidade']").val(1);
+        $("input[name='repercussao']").val(1);
 
         Calc.atualizarQualificador("natureza", 1);
         Calc.atualizarQualificador("gravidade", 1);
         Calc.atualizarQualificador("dano", 0);
+        Calc.atualizarQualificador("repercussao", 1);
 
         Calc.atualizarCalculos();
     },
@@ -193,12 +197,13 @@ const Calc = {
         let ptsNatureza = parseInt($('#naturezaPontos').val());
         let ptsGravidade = parseInt($('#gravidadePontos').val());
         let ptsDano = parseInt($('#danoPontos').val());
+        let ptsRepercussao = parseInt($('#repercussaoPontos').val());
         let ptsAtenuantes = parseInt($('#atenuantesPontos').val());
         let ptsAgravantes = parseInt($('#agravantesPontos').val());
         let ptsBonsAntecedentes = parseInt($('#bonsAntecedentesPontos').val());
         let ptsMausAntecedentes = parseInt($('#mausAntecedentesPontos').val());
 
-        let graus = ptsNatureza + ptsGravidade + ptsDano - ptsAtenuantes + ptsAgravantes - ptsBonsAntecedentes + ptsMausAntecedentes;
+        let graus = ptsNatureza + ptsGravidade + ptsDano + ptsRepercussao - ptsAtenuantes + ptsAgravantes - ptsBonsAntecedentes + ptsMausAntecedentes;
 
         $('#totalGeral').html(graus);
 
@@ -290,7 +295,7 @@ const Calc = {
     },
 
     atualizarQualificador: function (prefixo, valor) {
-        if (prefixo == "natureza" || prefixo == "gravidade" || prefixo == "dano") {
+        if (prefixo == "natureza" || prefixo == "gravidade" || prefixo == "dano" || prefixo == "repercussao") {
             if (15 <= valor && valor <= 21) {
                 $(`#${prefixo}Circulo`).removeClass("circulo-qualificador-leve circulo-qualificador-medio circulo-qualificador-grave").addClass("circulo-qualificador-grave");
                 $(`#${prefixo}Qualificador`).html(Calc.qualificadores[prefixo][2]);

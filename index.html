@@ -160,6 +160,26 @@
                                    data-bs-toggle="tooltip" data-bs-placement="right" />
                         </td>
                     </tr>
+
+                     <tr>
+                        <td title="A repercussão é avaliada conforme a amplitude dos efeitos da infração sobre o serviço público, a credibilidade da instituição e a confiança social, e a extensão dos danos causados a terceiros ou ao erário."
+                            data-bs-toggle="tooltip" data-bs-placement="right">
+                            Repercussão
+                        </td>
+                        <td>
+                            <div id="repercussaoCirculo" class="circulo-qualificador-leve"></div>
+                            <span id="repercussaoQualificador">Baixa</span>
+                        </td>
+                        <td>
+                            <input type="range" class="custom-range" name="repercussao"
+                                   oninput="Calc.onInputRange('repercussao', this.value)" value="1" min="1" max="21" style="width: 100%;" />
+                        </td>
+                        <td>
+                            <input type="number" id="repercussaoPontos" value="1" min="1" max="21"
+                                   onchange="Calc.onChangeTotal('repercussao', this)" tabindex="3" title="Informe um valor inteiro"
+                                   data-bs-toggle="tooltip" data-bs-placement="right" />
+                        </td>
+                    </tr>
                     <tr>
                         <td title="Dano é avaliado conforme o 'grau' da lesão a um bem juridicamente protegido, causando prejuízo material ou imaterial."
                             data-bs-toggle="tooltip" data-bs-placement="right">
@@ -175,9 +195,11 @@
                         </td>
                         <td>
                             <input type="number" id="danoPontos" value="0" min="0" max="21" onchange="Calc.onChangeTotal('dano', this)"
-                                   tabindex="3" title="Informe um valor inteiro" data-bs-toggle="tooltip" data-bs-placement="right" />
+                                   tabindex="4" title="Informe um valor inteiro" data-bs-toggle="tooltip" data-bs-placement="right" />
                         </td>
                     </tr>
+
+                   
                     <tr>
                         <td colspan="2"
                             title="As circunstâncias agravantes correspondem a situações relacionadas à infração cometida pelo agente e que têm o condão de elevar o 'grau' de sua conduta."
@@ -207,7 +229,7 @@
                         </td>
                         <td>
                             <input type="number" id="mausAntecedentesPontos" value="0" min="0" max="21"
-                                   onchange="Calc.onChangeTotal('mausAntecedentes', this)" tabindex="7" title="Informe um valor inteiro"
+                                   onchange="Calc.onChangeTotal('mausAntecedentes', this)" tabindex="6" title="Informe um valor inteiro"
                                    data-bs-toggle="tooltip" data-bs-placement="right" />
                         </td>
                     </tr>
@@ -241,7 +263,7 @@
                         </td>
                         <td>
                             <input type="number" id="atenuantesPontos" value="0" min="0" max="21"
-                                   onchange="Calc.onChangeTotal('atenuantes', this)" tabindex="4" title="Informe um valor inteiro"
+                                   onchange="Calc.onChangeTotal('atenuantes', this)" tabindex="7" title="Informe um valor inteiro"
                                    data-bs-toggle="tooltip" data-bs-placement="right" />
                         </td>
                     </tr>
@@ -258,7 +280,7 @@
                         </td>
                         <td>
                             <input type="number" id="bonsAntecedentesPontos" value="0" min="0" max="21"
-                                   onchange="Calc.onChangeTotal('bonsAntecedentes', this)" tabindex="6" title="Informe um valor inteiro"
+                                   onchange="Calc.onChangeTotal('bonsAntecedentes', this)" tabindex="8" title="Informe um valor inteiro"
                                    data-bs-toggle="tooltip" data-bs-placement="right" />
                         </td>
                     </tr>
