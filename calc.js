@@ -184,13 +184,13 @@ const Calc = {
         let resultado = "";
 
         if (config.demissao) {
-            resultado = "<h3>Demissão, Destituição, Cassação de Aposentadoria ou Disponibilidade</h3>"; // Corrigido: Demissão, Destituição, Cassação
-            resultado += "<h3>Celebração de TAC impossível</h3>"; // Corrigido: Celebração, impossível
+            resultado = "<h3 class='text-danger'>Demissão, Destituição, Cassação de Aposentadoria ou Disponibilidade</h3>"; // Corrigido: Demissão, Destituição, Cassação
+            resultado += "<h3 class='text-danger'>Celebração de TAC impossível</h3>"; // Corrigido: Celebração, impossível
         } else {
             resultado = Calc.calcularAdvertenciaOuSuspensao(config);
         }
 
-        $('#areaResultado').html(resultado);
+        $('#areaResultado .card-body').html(resultado);
     },
 
     calcularAdvertenciaOuSuspensao: function (config) {
@@ -222,13 +222,13 @@ const Calc = {
         let retorno = "";
 
         if (Calc.tacNaoPodeSerCelebrado(diasSuspensao) || config.reincidencia || config.penalidadeVigente || config.apenadoDisciplinarmenteUltimos12Meses || config.tacPendenteCumprimento) {
-            retorno = `<h3>Celebração de TAC impossível</h3>`; // Corrigido: Celebração, impossível
+            retorno = `<h3><span class="text-danger">Celebração de TAC impossível</span></h3>`; // Corrigido: Celebração, impossível
         } else {
-            retorno = `<h3>Celebração de TAC possível</h3>`; // Corrigido: Celebração, possível
+            retorno = `<h3><span class="text-success">Celebração de TAC possível</span></h3>`; // Corrigido: Celebração, possível
         }
 
-        retorno += `<p style="text-align: right;">A celebração de TAC deve observar as condições estabelecidas na PORTARIA NORMATIVA CGU Nº 27, DE 11 DE OUTUBRO DE 2022. 
-            Clique <a href='https://in.gov.br/en/web/dou/-/portaria-normativa-cgu-n-27-de-11-de-outubro-de-2022-435868760' target='blank'>aqui</a> para acessar.<p>`; // Corrigido: celebração, condições, Nº
+        retorno += `<p style="text-align: center; font-size: 0.9rem;" class="mt-2">A celebração de TAC deve observar as condições estabelecidas na PORTARIA NORMATIVA CGU Nº 27, DE 11 DE OUTUBRO DE 2022. 
+        Clique <a href='https://in.gov.br/en/web/dou/-/portaria-normativa-cgu-n-27-de-11-de-outubro-de-2022-435868760' target='blank'>aqui</a> para acessar.<p>`; // Corrigido: celebração, condições, Nº
 
         return retorno;
     },
@@ -240,7 +240,7 @@ const Calc = {
 
         let retorno = "";
 
-        retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${dias} dia(s)</h3>`; // Corrigido: Suspensão
+        retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${dias} dia(s)</span></h3>`; // Corrigido: Suspensão
         retorno += Calc.calcularMensagemTAC(config, dias);
 
         return retorno;
@@ -261,10 +261,10 @@ const Calc = {
 
         if (config.suspensao2) {
             if (config.advertencia) {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral} dia(s)</h3>`; // Corrigido: Suspensão
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral} dia(s)</span></h3>`; // Corrigido: Suspensão
                 retorno += Calc.calcularMensagemTAC(config, diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral);
             } else {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${diasSuspensao2} dia(s)</h3>`; // Corrigido: Suspensão
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${diasSuspensao2} dia(s)</span></h3>`; // Corrigido: Suspensão
                 retorno += Calc.calcularMensagemTAC(config, diasSuspensao2);
             }
 
@@ -273,14 +273,14 @@ const Calc = {
 
         if (graus <= 36) {
             if (config.reincidencia) {
-                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Advertência para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de 1 dia</h3>`; // Corrigido: Advertência, Suspensão, reincidência
+                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Advertência para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de 1 dia</span></h3>`; // Corrigido: Advertência, Suspensão, reincidência
                 retorno += Calc.calcularMensagemTAC(config, 1);
             } else {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Advertência</h3>`; // Corrigido: Advertência
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-info">Advertência</span></h3>`; // Corrigido: Advertência
                 retorno += Calc.calcularMensagemTAC(config, 0);
             }
         } else {
-            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${graus - 36} dia(s)</h3>`; // Corrigido: Suspensão
+            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${graus - 36} dia(s)</span></h3>`; // Corrigido: Suspensão
             retorno += Calc.calcularMensagemTAC(config, graus - 36);
         }
 

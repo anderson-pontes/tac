@@ -1,72 +1,127 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Darker text for better readability */
+    line-height: 1.6;
+}
+
+/* Headings */
 h1 {
-    font-size: 1.4rem;
+    font-size: 1.8rem; /* Adjusted for responsiveness */
+    font-weight: 700;
+    color: #0d6efd; /* Bootstrap primary blue */
+    margin-bottom: 0.5rem;
+}
+
+h3 { /* Used for results primarily */
+    font-size: 1.3rem; /* Adjusted */
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+h4.card-title { /* For section titles within cards */
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #495057; /* Slightly muted color */
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Softer shadow */
+}
+
+.card-header {
+    background-color: #e9ecef; /* Light gray for card headers */
+    border-bottom: 1px solid #dee2e6;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Table Styles */
+.table-wrapper {
+    max-height: 300px; /* Max height for scrollable table */
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem; /* Match card rounding */
+    margin-top: -1px; /* Align with card header bottom border */
+}
+
+/* Ensure table header inside scrollable area is sticky */
+.table-wrapper thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8f9fa; /* Background for sticky header */
+    border-bottom: 2px solid #dee2e6; /* Stronger border for header */
+}
+
+.table th {
+    font-weight: 500; /* Medium weight for table headers */
+    font-size: 0.9rem;
+    padding: 0.6rem 0.5rem; /* Adjusted padding */
+}
+.table td {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.5rem; /* Adjusted padding */
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle hover effect */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.025); /* Lighter stripe */
+}
+
+
+/* Form Elements */
+input[type="number"].form-control-sm {
+    max-width: 80px; /* Control width of number inputs */
+    padding: 0.25rem 0.5rem; /* Bootstrap sm padding */
     text-align: center;
 }
 
-h3 {
-    font-size: 1.2rem;
-    text-align: right;
+.form-check-input {
+    cursor: pointer;
 }
 
-h4 {
-    font-size: 1.2rem;
-    text-align: center;
+.form-range {
+    cursor: pointer;
 }
 
-input {
-    font-size: small;
-}
-
-.container {
-    margin-bottom: 15px;
-}
-
-
-.circulo-qualificador-leve {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color:gray;
-    box-shadow: inset -10px -10px 10px gray, inset 3px 3px 5px #FFF;
-    margin: 4px;
-    float: left;
-}
-
-.circulo-qualificador-medio {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color:darkgoldenrod;
-    box-shadow: inset -10px -10px 10px darkgoldenrod, inset 3px 3px 5px #FFF;
-    margin: 4px;
-    float: left;
-}
-
+/* Qualificador Circles */
+.circulo-qualificador-leve,
+.circulo-qualificador-medio,
 .circulo-qualificador-grave {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color:darkred;
-    box-shadow: inset -10px -10px 10px darkred, inset 3px 3px 5px #FFF;
     margin: 4px;
     float: left;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), inset 2px 2px 4px rgba(255,255,255,0.7); /* Modernized shadow */
 }
 
-.table-wrapper {
-    height: 250px; 
-    overflow-y: scroll;
+.circulo-qualificador-leve {
+    background-color: gray;
 }
 
-.table-wrapper th{
-    position: sticky;
-    background: white;
-    top: 0;
+.circulo-qualificador-medio {
+    background-color: darkgoldenrod;
 }
 
-.table>:not(caption)>*>* {
-    padding: .15rem .15rem;
+.circulo-qualificador-grave {
+    background-color: darkred;
 }
 
+/* Utility Classes */
 .pointer {
     cursor: pointer;
 }
@@ -75,4 +130,68 @@ input {
     cursor: help;
 }
 
-#lnkImagem { text-decoration: none; }
+/* Links and Buttons */
+a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+#lnkImagem {
+    display: inline-block;
+    vertical-align: middle;
+}
+#lnkImagem i {
+    margin-right: 5px;
+}
+
+/* Result Area Specifics */
+#areaResultado .card-body {
+    padding: 1.5rem;
+}
+#areaResultado h3 { /* Overrides global h3 for this specific area */
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+#areaResultado h3:first-child {
+    margin-top: 0;
+}
+#areaResultado p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    .card-header {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    .table th, .table td {
+        font-size: 0.85rem;
+        padding: 0.4rem;
+    }
+    #areaParametros th, #areaParametros td { /* Make parameter table cells stack on small screens */
+      display: block;
+      width: 100%;
+      text-align: left!important; /* Override inline text-align:right */
+    }
+    #areaParametros td input[type="number"]{
+      margin-bottom: 10px;
+    }
+    #areaParametros td:has(> input[type="range"]) { /* Ensure range input takes full width */
+       padding-left: 0.5rem;
+       padding-right: 0.5rem;
+    }
+     #areaParametros thead { /* Hide table header on small screens if stacking */
+        display: none;
+    }
+}
