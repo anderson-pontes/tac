@@ -234,7 +234,7 @@ const Calc = {
     },
 
     calcularCasoSuspensao1: function (config, graus) {
-        let dias = 6 * graus / 7;
+        let dias = 5 * graus / 7;
         dias = (dias > 1) ? dias : 1;
         dias = Math.floor(dias);
 
@@ -251,7 +251,7 @@ const Calc = {
         diasSuspensao2 = (diasSuspensao2 > 1) ? diasSuspensao2 : 1;
         diasSuspensao2 = Math.floor(diasSuspensao2);
 
-        let diasCasoGeral = graus - 15;
+        let diasCasoGeral = graus - 36;
 
         return Calc.calcularCasosGeral(config, graus, diasSuspensao2, diasCasoGeral);
     },
@@ -271,7 +271,7 @@ const Calc = {
             return retorno;
         }
 
-        if (graus <= 15) {
+        if (graus <= 36) {
             if (config.reincidencia) {
                 retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Advertência para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de 1 dia</h3>`; // Corrigido: Advertência, Suspensão, reincidência
                 retorno += Calc.calcularMensagemTAC(config, 1);
@@ -280,8 +280,8 @@ const Calc = {
                 retorno += Calc.calcularMensagemTAC(config, 0);
             }
         } else {
-            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${graus - 15} dia(s)</h3>`; // Corrigido: Suspensão
-            retorno += Calc.calcularMensagemTAC(config, graus - 15);
+            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right">Suspensão de ${graus - 36} dia(s)</h3>`; // Corrigido: Suspensão
+            retorno += Calc.calcularMensagemTAC(config, graus - 36);
         }
 
         return retorno;
