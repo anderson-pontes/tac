@@ -290,10 +290,19 @@
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align: right;">
-                            Houve assinatura de TAC nos últimos 2 anos?
+                            Tem Termo de Ajustamento Disciplinar (TAC) pendente de cumprimento, inclusive as obrigações de indenização ou ressarcimento ao Erário?
                         </td>
                         <td>
-                            <input type="checkbox" id="tacAssinadoNosUltimos2Anos" class="form-check-input"
+                            <input type="checkbox" id="tacPendenteCumprimento" class="form-check-input"
+                                   onchange="Calc.atualizarCalculos()"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">
+                            Foi apenado disciplinarmente nos últimos 12 (doze) meses, a contar do cumprimento da pena?
+                        </td>
+                        <td>
+                            <input type="checkbox" id="apenadoDisciplinarmenteUltimos12Meses" class="form-check-input"
                                    onchange="Calc.atualizarCalculos()"></input>
                         </td>
                     </tr>

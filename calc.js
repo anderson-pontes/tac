@@ -147,7 +147,8 @@ const Calc = {
 
         let reincidencia = $('#reincidencia').prop('checked');
         let penalidadeVigente = $('#penalidadeVigente').prop('checked');
-        let tacAssinadoNosUltimos2Anos = $('#tacAssinadoNosUltimos2Anos').prop('checked');
+        let apenadoDisciplinarmenteUltimos12Meses = $('#apenadoDisciplinarmenteUltimos12Meses').prop('checked');
+        let tacPendenteCumprimento = $('#tacPendenteCumprimento').prop('checked');
 
         inputs.each((index, input) => {
             let enquadramento = Calc.enquadramentos[$(input).val()];
@@ -159,7 +160,7 @@ const Calc = {
 
         let config = {
             demissao: existeDemissao, suspensao1: existeSuspensao1, suspensao2: existeSuspensao2, advertencia: existeAdvertencia,
-            reincidencia: reincidencia, penalidadeVigente: penalidadeVigente, tacAssinadoNosUltimos2Anos: tacAssinadoNosUltimos2Anos
+            reincidencia: reincidencia, penalidadeVigente: penalidadeVigente, apenadoDisciplinarmenteUltimos12Meses: apenadoDisciplinarmenteUltimos12Meses, tacPendenteCumprimento: tacPendenteCumprimento
         };
 
         Calc.controlarExibicaoParametros(config.demissao);
@@ -215,7 +216,7 @@ const Calc = {
     calcularMensagemTAC: function (config, diasSuspensao) {
         let retorno = "";
 
-        if (Calc.tacNaoPodeSerCelebrado(diasSuspensao) || config.reincidencia || config.penalidadeVigente || config.tacAssinadoNosUltimos2Anos) {
+        if (Calc.tacNaoPodeSerCelebrado(diasSuspensao) || config.reincidencia || config.penalidadeVigente || config.apenadoDisciplinarmenteUltimos12Meses || config.tacPendenteCumprimento) {
             retorno = `<h3>Celebração de TAC impossível</h3>`; // Corrigido: Celebração, impossível
         } else {
             retorno = `<h3>Celebração de TAC possível</h3>`; // Corrigido: Celebração, possível
