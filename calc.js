@@ -222,12 +222,12 @@ const Calc = {
         let retorno = "";
 
         if (Calc.tacNaoPodeSerCelebrado(diasSuspensao) || config.reincidencia || config.penalidadeVigente || config.apenadoDisciplinarmenteUltimos12Meses || config.tacPendenteCumprimento) {
-            retorno = `<h3><span class="text-danger">Celebração de TAC impossível</span></h3>`; // Corrigido: Celebração, impossível
+            retorno = `<h3><span class="text-danger">Celebração de TAD impossível</span></h3>`; // Corrigido: Celebração, impossível
         } else {
-            retorno = `<h3><span class="text-success">Celebração de TAC possível</span></h3>`; // Corrigido: Celebração, possível
+            retorno = `<h3><span class="text-success">Celebração de TAD possível</span></h3>`; // Corrigido: Celebração, possível
         }
 
-        retorno += `<p style="text-align: center; font-size: 0.9rem;" class="mt-2">A celebração de TAC deve observar as condições estabelecidas na PORTARIA NORMATIVA CGU Nº 27, DE 11 DE OUTUBRO DE 2022. 
+        retorno += `<p style="text-align: center; font-size: 0.9rem;" class="mt-2">A celebração de TAD deve observar as condições estabelecidas na PORTARIA NORMATIVA CGU Nº 27, DE 11 DE OUTUBRO DE 2022. 
         Clique <a href='https://in.gov.br/en/web/dou/-/portaria-normativa-cgu-n-27-de-11-de-outubro-de-2022-435868760' target='blank'>aqui</a> para acessar.<p>`; // Corrigido: celebração, condições, Nº
 
         return retorno;

@@ -5,23 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <link href="./calc.css" rel="stylesheet">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://kit.fontawesome.com/bd92989e4d.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="./calc.js"></script>
     <script type="text/javascript">
         $(function () {
             Calc.init();
-            // A função Calc.init() já inicializa os tooltips para toda a página.
-            // Se houver necessidade de reinicializar tooltips para elementos adicionados dinamicamente
-            // fora do escopo do Calc.init(), pode-se chamar Calc.inicializarTooltips() novamente.
+            
         });
 
         /*
@@ -38,7 +38,7 @@
 
         function expandirTabela() {
             $('#areaEnquadramento').removeClass('table-wrapper');
-            $('#areaEnquadramento').css('max-height', 'none'); // Allow full expansion
+            $('#areaEnquadramento').css('max-height', 'none'); 
 
             $('.fa-expand-alt').hide();
             $('.fa-compress-alt').show();
@@ -46,7 +46,7 @@
 
         function contrairTabela() {
             $('#areaEnquadramento').addClass('table-wrapper');
-            $('#areaEnquadramento').css('max-height', ''); // Reset to CSS defined max-height
+            $('#areaEnquadramento').css('max-height', ''); 
 
             $('.fa-expand-alt').show();
             $('.fa-compress-alt').hide();
@@ -77,9 +77,20 @@
             $('#btnExibirTodosText').show();
         }
 
-        // Nova função para resetar a calculadora
+        
         function resetarCalculadora() {
             window.location.reload();
+        }
+
+        function exportarPDF() {
+            const element = document.getElementById('calcBody');
+            html2pdf().set({
+                margin: 0.5,
+                filename: 'relatorio.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            }).from(element).save();
         }
     </script>
 
@@ -87,13 +98,19 @@
 </head>
 
 <body id="calcBody">
-    <div class="container mt-3 mb-3"> <div class="text-center mb-4">
+    <div class="container mt-3 mb-3">
+        <div class="text-center mb-4">
             <h1>
-                <span id="titulo">Calculadora de Penalidade Administrativa e Viabilidade de TAC</span>
-                <i class="fas fa-info-circle pointer" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size: 1.5rem; vertical-align: middle; margin-left: 10px;"></i>
+                <span id="titulo">Calculadora de Penalidade Administrativa e Viabilidade de TAD</span>
+                <i class="fas fa-info-circle pointer" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    style="font-size: 1.5rem; vertical-align: middle; margin-left: 10px;"></i>
             </h1>
-            <a id="lnkImagem" href="#" data-bs-toggle="modal" data-bs-target="#ajudaCapturaTela" class="btn btn-outline-secondary btn-sm mt-2">
+            <a id="lnkImagem" href="#" data-bs-toggle="modal" data-bs-target="#ajudaCapturaTela"
+                class="btn btn-outline-secondary btn-sm mt-2">
                 <i class="fas fa-camera-retro"></i> Capturar tela
+            </a>
+            <a class="btn btn-outline-primary btn-sm mt-2" onclick="exportarPDF()">
+                <i class="fas fa-file-pdf"></i> Exportar PDF
             </a>
             <a id="lnkImagemAux" download="calculadora.png" style="display: none;"></a>
         </div>
@@ -101,24 +118,35 @@
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-2 mb-md-0">
-                    <i class="fas fa-trash-alt pointer me-2" title="Apaga a seleção de enquadramento" data-bs-toggle="tooltip"
-                       data-bs-placement="top" onclick="Calc.apagarSelecaoEnquadramentos()"></i>
+                    <i class="fas fa-trash-alt pointer me-2" title="Apaga a seleção de enquadramento"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
+                        onclick="Calc.apagarSelecaoEnquadramentos()"></i>
                     <span id="infoEnquadramentos" class="fw-bold">Enquadramentos (0 selecionados)</span>
-                    <i class="fas fa-question-circle help ms-2" title="Aperte as teclas 'Ctrl + F' para abrir a busca do navegador." data-bs-toggle="tooltip" data-bs-placement="right"></i>
+                    <i class="fas fa-question-circle help ms-2"
+                        title="Aperte as teclas 'Ctrl + F' para abrir a busca do navegador." data-bs-toggle="tooltip"
+                        data-bs-placement="right"></i>
                 </div>
                 <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-outline-danger btn-sm me-3" onclick="resetarCalculadora()" title="Limpar tudo e recarregar a página" data-bs-toggle="tooltip" data-bs-placement="left">
+                    <button type="button" class="btn btn-outline-danger btn-sm me-3" onclick="resetarCalculadora()"
+                        title="Limpar tudo e recarregar a página" data-bs-toggle="tooltip" data-bs-placement="left">
                         <i class="fas fa-sync-alt me-1"></i> Resetar
                     </button>
 
-                    <i id="btnExibirSelecionados" class="fas fa-filter pointer ms-3" onclick="exibirSelecionados()" data-bs-toggle="tooltip" data-bs-placement="left" title="Exibir selecionados"></i>
-                    <span id="btnExibirSelecionadosText" class="pointer small ms-1 me-2" onclick="exibirSelecionados()">Selecionados</span>
+                    <i id="btnExibirSelecionados" class="fas fa-filter pointer ms-3" onclick="exibirSelecionados()"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="Exibir selecionados"></i>
+                    <span id="btnExibirSelecionadosText" class="pointer small ms-1 me-2"
+                        onclick="exibirSelecionados()">Selecionados</span>
 
-                    <i id="btnExibirTodos" class="fas fa-list pointer ms-3" style="display: none;" onclick="exibirTodos()" data-bs-toggle="tooltip" data-bs-placement="left" title="Exibir todos"></i>
-                    <span id="btnExibirTodosText" class="pointer small ms-1 me-2" style="display: none;" onclick="exibirTodos()">Todos</span>
+                    <i id="btnExibirTodos" class="fas fa-list pointer ms-3" style="display: none;"
+                        onclick="exibirTodos()" data-bs-toggle="tooltip" data-bs-placement="left"
+                        title="Exibir todos"></i>
+                    <span id="btnExibirTodosText" class="pointer small ms-1 me-2" style="display: none;"
+                        onclick="exibirTodos()">Todos</span>
 
-                    <i class="fas fa-expand-alt pointer ms-3" onclick="expandirTabela()" data-bs-toggle="tooltip" data-bs-placement="left" title="Tabela completa"></i>
-                    <i class="fas fa-compress-alt pointer ms-3" style="display: none;" onclick="contrairTabela()" data-bs-toggle="tooltip" data-bs-placement="left" title="Tabela reduzida"></i>
+                    <i class="fas fa-expand-alt pointer ms-3" onclick="expandirTabela()" data-bs-toggle="tooltip"
+                        data-bs-placement="left" title="Tabela completa"></i>
+                    <i class="fas fa-compress-alt pointer ms-3" style="display: none;" onclick="contrairTabela()"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="Tabela reduzida"></i>
                 </div>
             </div>
             <div id="areaEnquadramento" class="table-wrapper">
@@ -130,7 +158,7 @@
                         </tr>
                     </thead>
                     <tbody style="text-align:justify;">
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -143,11 +171,13 @@
                         <tr>
                             <th>
                                 <i class="fas fa-trash-alt pointer"
-                                   title="Reinicializa os parâmetros de dosimetria que aumentam o grau da infração" data-bs-toggle="tooltip"
-                                   data-bs-placement="top" onclick="Calc.resetarCriteriosQueAumentamGrau()"></i> Critério
+                                    title="Reinicializa os parâmetros de dosimetria que aumentam o grau da infração"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    onclick="Calc.resetarCriteriosQueAumentamGrau()"></i> Critério
                             </th>
                             <th style="width: 150px;">Qualificador</th>
-                            <th style="width: 65%;">Intervalo</th> <th>Graus</th>
+                            <th style="width: 65%;">Intervalo</th>
+                            <th>Graus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -161,13 +191,14 @@
                                 <span id="naturezaQualificador">Culpa Leve</span>
                             </td>
                             <td>
-                                <input type="range" class="form-range" name="natureza" oninput="Calc.onInputRange('natureza', this.value)"
-                                       value="1" min="1" max="21" />
+                                <input type="range" class="form-range" name="natureza"
+                                    oninput="Calc.onInputRange('natureza', this.value)" value="1" min="1" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="naturezaPontos" value="1" min="1" max="21"
-                                       onchange="Calc.onChangeTotal('natureza', this)" tabindex="1" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="naturezaPontos" value="1"
+                                    min="1" max="21" onchange="Calc.onChangeTotal('natureza', this)" tabindex="1"
+                                    title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
@@ -181,15 +212,16 @@
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="gravidade"
-                                       oninput="Calc.onInputRange('gravidade', this.value)" value="1" min="1" max="21" />
+                                    oninput="Calc.onInputRange('gravidade', this.value)" value="1" min="1" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="gravidadePontos" value="1" min="1" max="21"
-                                       onchange="Calc.onChangeTotal('gravidade', this)" tabindex="2" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="gravidadePontos" value="1"
+                                    min="1" max="21" onchange="Calc.onChangeTotal('gravidade', this)" tabindex="2"
+                                    title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
-                         <tr>
+                        <tr>
                             <td title="A repercussão é avaliada conforme a amplitude dos efeitos da infração sobre o serviço público, a credibilidade da instituição e a confiança social, e a extensão dos danos causados a terceiros ou ao erário."
                                 data-bs-toggle="tooltip" data-bs-placement="right">
                                 Repercussão
@@ -200,12 +232,13 @@
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="repercussao"
-                                       oninput="Calc.onInputRange('repercussao', this.value)" value="1" min="1" max="21" />
+                                    oninput="Calc.onInputRange('repercussao', this.value)" value="1" min="1" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="repercussaoPontos" value="1" min="1" max="21"
-                                       onchange="Calc.onChangeTotal('repercussao', this)" tabindex="3" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="repercussaoPontos"
+                                    value="1" min="1" max="21" onchange="Calc.onChangeTotal('repercussao', this)"
+                                    tabindex="3" title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
@@ -218,12 +251,14 @@
                                 <span id="danoQualificador">Leve</span>
                             </td>
                             <td>
-                                <input type="range" class="form-range" name="dano" oninput="Calc.onInputRange('dano', this.value)"
-                                       value="0" min="0" max="21" />
+                                <input type="range" class="form-range" name="dano"
+                                    oninput="Calc.onInputRange('dano', this.value)" value="0" min="0" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="danoPontos" value="0" min="0" max="21" onchange="Calc.onChangeTotal('dano', this)"
-                                       tabindex="4" title="Informe um valor inteiro" data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="danoPontos" value="0"
+                                    min="0" max="21" onchange="Calc.onChangeTotal('dano', this)" tabindex="4"
+                                    title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
@@ -234,28 +269,31 @@
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="agravantes"
-                                       oninput="Calc.onInputRange('agravantes', this.value)" value="0" min="0" max="21" />
+                                    oninput="Calc.onInputRange('agravantes', this.value)" value="0" min="0" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="agravantesPontos" value="0" min="0" max="21"
-                                       onchange="Calc.onChangeTotal('agravantes', this)" tabindex="5" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="agravantesPontos"
+                                    value="0" min="0" max="21" onchange="Calc.onChangeTotal('agravantes', this)"
+                                    tabindex="5" title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2"
-                                title="Os maus antecedentes são os registros desabonadores quanto à conduta funcional do infrator, tais como: descumprimento de Termo de Ajustamento de Conduta - TAC, faltas não justificadas, atrasos e outros registros indicadores de descompromisso com o trabalho. Se não houver tais registros na pasta funcional, o valor será ZERO."
+                                title="Os maus antecedentes são os registros desabonadores quanto à conduta funcional do infrator, tais como: descumprimento de Termo de Ajustamento Disciplinar - TAD, faltas não justificadas, atrasos e outros registros indicadores de descompromisso com o trabalho. Se não houver tais registros na pasta funcional, o valor será ZERO."
                                 data-bs-toggle="tooltip" data-bs-placement="bottom">
                                 Maus Antecedentes
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="mausAntecedentes"
-                                       oninput="Calc.onInputRange('mausAntecedentes', this.value)" value="0" min="0" max="21" />
+                                    oninput="Calc.onInputRange('mausAntecedentes', this.value)" value="0" min="0"
+                                    max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="mausAntecedentesPontos" value="0" min="0" max="21"
-                                       onchange="Calc.onChangeTotal('mausAntecedentes', this)" tabindex="6" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="mausAntecedentesPontos"
+                                    value="0" min="0" max="21" onchange="Calc.onChangeTotal('mausAntecedentes', this)"
+                                    tabindex="6" title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                     </tbody>
@@ -267,11 +305,13 @@
                         <tr>
                             <th>
                                 <i class="fas fa-trash-alt pointer"
-                                   title="Reinicializa os parâmetros de dosimetria que diminuem o grau da infração" data-bs-toggle="tooltip"
-                                   data-bs-placement="top" onclick="Calc.resetarCriteriosQueDiminuem()"></i> Critério
+                                    title="Reinicializa os parâmetros de dosimetria que diminuem o grau da infração"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    onclick="Calc.resetarCriteriosQueDiminuem()"></i> Critério
                             </th>
                             <th style="width: 150px;">Qualificador</th>
-                            <th style="width: 65%;">Intervalo</th> <th>Graus</th>
+                            <th style="width: 65%;">Intervalo</th>
+                            <th>Graus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -283,12 +323,13 @@
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="atenuantes"
-                                       oninput="Calc.onInputRange('atenuantes', this.value)" value="0" min="0" max="21" />
+                                    oninput="Calc.onInputRange('atenuantes', this.value)" value="0" min="0" max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="atenuantesPontos" value="0" min="0" max="21"
-                                       onchange="Calc.onChangeTotal('atenuantes', this)" tabindex="7" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="atenuantesPontos"
+                                    value="0" min="0" max="21" onchange="Calc.onChangeTotal('atenuantes', this)"
+                                    tabindex="7" title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
@@ -299,12 +340,14 @@
                             </td>
                             <td>
                                 <input type="range" class="form-range" name="bonsAntecedentes"
-                                       oninput="Calc.onInputRange('bonsAntecedentes', this.value)" value="0" min="0" max="21" />
+                                    oninput="Calc.onInputRange('bonsAntecedentes', this.value)" value="0" min="0"
+                                    max="21" />
                             </td>
                             <td>
-                                <input type="number" class="form-control form-control-sm" id="bonsAntecedentesPontos" value="0" min="0" max="21"
-                                       onchange="Calc.onChangeTotal('bonsAntecedentes', this)" tabindex="8" title="Informe um valor inteiro"
-                                       data-bs-toggle="tooltip" data-bs-placement="right" />
+                                <input type="number" class="form-control form-control-sm" id="bonsAntecedentesPontos"
+                                    value="0" min="0" max="21" onchange="Calc.onChangeTotal('bonsAntecedentes', this)"
+                                    tabindex="8" title="Informe um valor inteiro" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" />
                             </td>
                         </tr>
                         <tr>
@@ -321,7 +364,7 @@
                             </td>
                             <td>
                                 <input type="checkbox" id="reincidencia" class="form-check-input"
-                                       onchange="Calc.atualizarCalculos()"></input>
+                                    onchange="Calc.atualizarCalculos()"></input>
                             </td>
                         </tr>
                         <tr>
@@ -330,25 +373,27 @@
                             </td>
                             <td>
                                 <input type="checkbox" id="penalidadeVigente" class="form-check-input"
-                                       onchange="Calc.atualizarCalculos()"></input>
+                                    onchange="Calc.atualizarCalculos()"></input>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3" style="text-align: right;">
-                                Tem Termo de Ajustamento Disciplinar (TAC) pendente de cumprimento, inclusive as obrigações de indenização ou ressarcimento ao Erário?
+                                Tem Termo de Ajustamento Disciplinar (TAD) pendente de cumprimento, inclusive as
+                                obrigações de indenização ou ressarcimento ao Erário?
                             </td>
                             <td>
                                 <input type="checkbox" id="tacPendenteCumprimento" class="form-check-input"
-                                       onchange="Calc.atualizarCalculos()"></input>
+                                    onchange="Calc.atualizarCalculos()"></input>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3" style="text-align: right;">
-                                Foi apenado disciplinarmente nos últimos 12 (doze) meses, a contar do cumprimento da pena?
+                                Foi apenado disciplinarmente nos últimos 12 (doze) meses, a contar do cumprimento da
+                                pena?
                             </td>
                             <td>
-                                <input type="checkbox" id="apenadoDisciplinarmenteUltimos12Meses" class="form-check-input"
-                                       onchange="Calc.atualizarCalculos()"></input>
+                                <input type="checkbox" id="apenadoDisciplinarmenteUltimos12Meses"
+                                    class="form-check-input" onchange="Calc.atualizarCalculos()"></input>
                             </td>
                         </tr>
                     </tbody>
@@ -356,26 +401,32 @@
             </div>
         </div>
         <div id="areaResultado" class="card">
-            <div class="card-body text-center"> <h3>Selecione os enquadramentos para início dos cálculos</h3>
+            <div class="card-body text-center">
+                <h3>Selecione os enquadramentos para início dos cálculos</h3>
             </div>
         </div>
 
-    </div> <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg"> <div class="modal-content">
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Sobre a Calculadora</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p style="text-align:justify;">
-                        Para auxiliar no cálculo da penalidade, já está disponível o GUIA TEÓRICO E PRÁTICO DA DOSIMETRIA DA SANÇÃO DISCIPLINAR, que traz um passo a passo para a
+                        Para auxiliar no cálculo da penalidade, já está disponível o GUIA TEÓRICO E PRÁTICO DA
+                        DOSIMETRIA DA SANÇÃO DISCIPLINAR, que traz um passo a passo para a
                         realização da dosimetria e apresenta sugestões de texto adaptável. Clique
-                        <a href="https://repositorio.cgu.gov.br/bitstream/1/93731/1/Guia_Te%c3%b3rico_Pr%c3%a1tico_Dosimetria_San%c3%a7%c3%a3o_Disciplinar_2024.pdf" target="blank">
+                        <a href="https://repositorio.cgu.gov.br/bitstream/1/93731/1/Guia_Te%c3%b3rico_Pr%c3%a1tico_Dosimetria_San%c3%a7%c3%a3o_Disciplinar_2024.pdf"
+                            target="blank">
                             aqui
                         </a> para acessar o guia.
                     </p>
                     <p style="text-align:justify;">
-                        A presente calculadora visa orientar e facilitar os cálculos referentes a dosimetria das penalidades
+                        A presente calculadora visa orientar e facilitar os cálculos referentes a dosimetria das
+                        penalidades
                         administrativas aplicadas a servidores públicos federais
                         à luz da
                         <a href="https://www.planalto.gov.br/ccivil_03/LEIS/L8112compilado.htm" target="blank">
@@ -383,7 +434,8 @@
                         </a>,
                         e tem como referencial o estudo sobre dosimetria da
                         penalidade administrativa realizado pela Corregedoria-Geral da União. Clique
-                        <a href="https://repositorio.cgu.gov.br/bitstream/1/64488/6/Dosimetria_Sancoes_Adm_Disciplinares.pdf" target="blank">
+                        <a href="https://repositorio.cgu.gov.br/bitstream/1/64488/6/Dosimetria_Sancoes_Adm_Disciplinares.pdf"
+                            target="blank">
                             aqui
                         </a> para acessar o estudo.
                     </p>
@@ -395,7 +447,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="ajudaCapturaTela" tabindex="-1" aria-labelledby="ajudaCapturaTelaLabel" aria-hidden="true">
+    <div class="modal fade" id="ajudaCapturaTela" tabindex="-1" aria-labelledby="ajudaCapturaTelaLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -404,10 +457,12 @@
                 </div>
                 <div class="modal-body">
                     <p style="text-align:justify;">
-                        Para capturar a tela da calculadora, no Windows, pressione a tecla do logotipo do Windows + Shift + S.
+                        Para capturar a tela da calculadora, no Windows, pressione a tecla do logotipo do Windows +
+                        Shift + S.
                     </p>
                     <p style="text-align:justify;">
-                        Uma alternativa ao procedimento acima é o uso da tecla Print Screen que vai capturar toda a área do(s) monitor(es) de vídeo em uso.
+                        Uma alternativa ao procedimento acima é o uso da tecla Print Screen que vai capturar toda a área
+                        do(s) monitor(es) de vídeo em uso.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -417,7 +472,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
 
 </html>
