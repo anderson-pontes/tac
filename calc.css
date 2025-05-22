@@ -166,6 +166,11 @@ a:hover {
     margin-top: 1rem;
 }
 
+.footer {
+    border-top: 1px solid #dee2e6; /* Adiciona uma linha sutil no topo do rodapé */
+    font-size: 0.9rem; /* Tamanho de fonte um pouco menor para o rodapé */
+}
+
 /* Responsive adjustments if needed */
 @media (max-width: 768px) {
     h1 {
