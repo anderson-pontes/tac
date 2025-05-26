@@ -8,59 +8,71 @@ const Calc = {
     },
 
     enquadramentos: [
-        { descricao: "Lei 8.112, Art. 116, I - exercer com zelo e dedicação as atribuições do cargo;", pena: "Advertência" }, // Corrigido: dedicação, atribuições, Advertência
-        { descricao: "Lei 8.112, Art. 116, II - ser leal às instituições a que servir;", pena: "Advertência" }, // Corrigido: às, instituições, Advertência
-        { descricao: "Lei 8.112, Art. 116, III - observar as normas legais e regulamentares;", pena: "Advertência" }, // Corrigido: Advertência
-        { descricao: "Lei 8.112, Art. 116, IV - cumprir as ordens superiores, exceto quando manifestamente ilegais;", pena: "Advertência" }, // Corrigido: Advertência
-        { descricao: "Lei 8.112, Art. 116, V - atender com presteza: a) ao público em geral, prestando as informações requeridas, ressalvadas as protegidas por sigilo; b) à expedição de certidões requeridas para defesa de direito ou esclarecimento de situações de interesse pessoal; c) às requisições para a defesa da Fazenda Pública.", pena: "Advertência" }, // Corrigido: público, informações, à, expedição, certidões, situações, às, requisições, Pública, Advertência
-        { descricao: "Lei 8.112, Art. 116, VI - levar as irregularidades de que tiver ciência em razão do cargo ao conhecimento da autoridade superior ou, quando houver suspeita de envolvimento desta, ao conhecimento de outra autoridade competente para apuração;", pena: "Advertência" }, // Corrigido: ciência, razão, apuração, Advertência
-        { descricao: "Lei 8.112, Art. 116, VII - zelar pela economia do material e a conservação do patrimônio público;", pena: "Advertência" }, // Corrigido: conservação, patrimônio, público, Advertência
-        { descricao: "Lei 8.112, Art. 116, VIII - guardar sigilo sobre assunto da repartição;", pena: "Advertência" }, // Corrigido: repartição, Advertência
-        { descricao: "Lei 8.112, Art. 116, IX - manter conduta compatível com a moralidade administrativa;", pena: "Advertência" }, // Corrigido: compatível, Advertência
-        { descricao: "Lei 8.112, Art. 116, X - ser assíduo e pontual ao serviço;", pena: "Advertência" }, // Corrigido: assíduo, serviço, Advertência
-        { descricao: "Lei 8.112, Art. 116, XI - tratar com urbanidade as pessoas;", pena: "Advertência" }, // Corrigido: Advertência
-        { descricao: "Lei 8.112, Art. 116, XII - representar contra ilegalidade, omissão ou abuso de poder.", pena: "Advertência" }, // Corrigido: omissão, Advertência
-        { descricao: "Lei 8.112, Art. 117, I - ausentar-se do serviço durante o expediente, sem prévia autorização do chefe imediato;", pena: "Advertência" }, // Corrigido: serviço, prévia, autorização, Advertência
-        { descricao: "Lei 8.112, Art. 117, II - retirar, sem prévia anuência da autoridade competente, qualquer documento ou objeto da repartição;", pena: "Advertência" }, // Corrigido: prévia, anuência, repartição, Advertência
-        { descricao: "Lei 8.112, Art. 117, III - recusar fé a documentos públicos;", pena: "Advertência" }, // Corrigido: fé, Advertência
-        { descricao: "Lei 8.112, Art. 117, IV - opor resistência injustificada ao andamento de documento e processo ou execução de serviço;", pena: "Advertência" }, // Corrigido: resistência, execução, serviço, Advertência
-        { descricao: "Lei 8.112, Art. 117, V - promover manifestação de apreço ou desapreço no recinto da repartição;", pena: "Advertência" }, // Corrigido: manifestação, apreço, desapreço, repartição, Advertência
-        { descricao: "Lei 8.112, Art. 117, VI - cometer a pessoa estranha à repartição, fora dos casos previstos em lei, o desempenho de atribuição que seja de sua responsabilidade ou de seu subordinado;", pena: "Advertência" }, // Corrigido: à, repartição, atribuição, Advertência
-        { descricao: "Lei 8.112, Art. 117, VII - coagir ou aliciar subordinados no sentido de filiarem-se a associação profissional ou sindical, ou a partido político;", pena: "Advertência" }, // Corrigido: associação, político, Advertência
-        { descricao: "Lei 8.112, Art. 117, VIII - manter sob sua chefia imediata, em cargo ou função de confiança, cônjuge, companheiro ou parente até o segundo grau civil;", pena: "Advertência" }, // Corrigido: função, confiança, cônjuge, Advertência
-        { descricao: "Lei 8.112, Art. 117, IX - valer-se do cargo para lograr proveito pessoal ou de outrem, em detrimento da dignidade da função pública;", pena: "Demissão" }, // Corrigido: função, pública, Demissão
-        { descricao: "Lei 8.112, Art. 117, X - participar de gerência ou administração de sociedade privada, personificada ou não personificada, exercer o comércio, exceto na qualidade de acionista, cotista ou comanditário;", pena: "Demissão" }, // Corrigido: gerência, administração, não, comércio, Demissão
-        { descricao: "Lei 8.112, Art. 117, XI - atuar, como procurador ou intermediário, junto a repartições públicas, salvo quando se tratar de benefícios previdenciários ou assistenciais de parentes até o segundo grau, e de cônjuge ou companheiro;", pena: "Demissão" }, // Corrigido: intermediário, repartições, públicas, benefícios, previdenciários, cônjuge, Demissão
-        { descricao: "Lei 8.112, Art. 117, XII - receber propina, comissão, presente ou vantagem de qualquer espécie, em razão de suas atribuições;", pena: "Demissão" }, // Corrigido: comissão, espécie, razão, atribuições, Demissão
-        { descricao: "Lei 8.112, Art. 117, XIII - aceitar comissão, emprego ou pensão de estado estrangeiro;", pena: "Demissão" }, // Corrigido: comissão, pensão, Demissão
-        { descricao: "Lei 8.112, Art. 117, XIV - praticar usura sob qualquer de suas formas;", pena: "Demissão" }, // Corrigido: Demissão
-        { descricao: "Lei 8.112, Art. 117, XV - proceder de forma desidiosa;", pena: "Demissão" }, // Corrigido: Demissão
-        { descricao: "Lei 8.112, Art. 117, XVI - utilizar pessoal ou recursos materiais da repartição em serviços ou atividades particulares;", pena: "Demissão" }, // Corrigido: repartição, serviços, Demissão
-        { descricao: "Lei 8.112, Art. 117, XVII - cometer a outro servidor atribuições estranhas ao cargo que ocupa, exceto em situações de emergência e transitórias;", pena: "Suspensão1" }, // Corrigido: atribuições, situações, emergência, Suspensão
-        { descricao: "Lei 8.112, Art. 117, XVIII - exercer quaisquer atividades que sejam incompatíveis com o exercício do cargo ou função e com o horário de trabalho;", pena: "Suspensão1" }, // Corrigido: incompatíveis, exercício, função, horário, Suspensão
-        { descricao: "Lei 8.112, Art. 117, XIX - recusar-se a atualizar seus dados cadastrais quando solicitado.", pena: "Advertência" }, // Corrigido: Advertência
-        { descricao: "Lei 8.112, Art. 130, § 1º Será punido com suspensão de até 15 (quinze) dias o servidor que, injustificadamente, recusar-se a ser submetido a inspeção médica determinada pela autoridade competente, cessando os efeitos da penalidade uma vez cumprida a determinação.", pena: "Suspensão2" }, // Corrigido: §, Será, suspensão, inspeção, médica, determinação, Suspensão
-        { descricao: "Lei 8.112, Art. 132, I - crime contra a administração pública;", pena: "Demissão" }, // Corrigido: administração, pública, Demissão
-        { descricao: "Lei 8.112, Art. 132, II - abandono de cargo;", pena: "Demissão" }, // Corrigido: Demissão
-        { descricao: "Lei 8.112, Art. 132, III - inassiduidade habitual;", pena: "Demissão" }, // Corrigido: Demissão
-        { descricao: "Lei 8.112, Art. 132, IV - improbidade administrativa;", pena: "Demissão" }, // Corrigido: Demissão
-        { descricao: "Lei 8.112, Art. 132, V - incontinência pública e conduta escandalosa, na repartição;", pena: "Demissão" }, // Corrigido: incontinência, pública, repartição, Demissão
-        { descricao: "Lei 8.112, Art. 132, VI - insubordinação grave em serviço;", pena: "Demissão" }, // Corrigido: insubordinação, serviço, Demissão
-        { descricao: "Lei 8.112, Art. 132, VII - ofensa física, em serviço, a servidor ou a particular, salvo em legítima defesa própria ou de outrem;", pena: "Demissão" }, // Corrigido: física, serviço, legítima, própria, Demissão
-        { descricao: "Lei 8.112, Art. 132, VIII - aplicação irregular de dinheiros públicos;", pena: "Demissão" }, // Corrigido: aplicação, Demissão
-        { descricao: "Lei 8.112, Art. 132, IX - revelação de segredo do qual se apropriou em razão do cargo;", pena: "Demissão" }, // Corrigido: revelação, razão, Demissão
-        { descricao: "Lei 8.112, Art. 132, X - lesão aos cofres públicos e dilapidação do patrimônio nacional;", pena: "Demissão" }, // Corrigido: lesão, dilapidação, patrimônio, Demissão
-        { descricao: "Lei 8.112, Art. 132, XI - corrupção;", pena: "Demissão" }, // Corrigido: corrupção, Demissão
-        { descricao: "Lei 8.112, Art. 132, XII - acumulação ilegal de cargos, empregos ou funções públicas;", pena: "Demissão" }, // Corrigido: acumulação, funções, públicas, Demissão
-        { descricao: "Lei 8.112, Art. 132, XIII - transgressão dos incisos IX a XVI do art. 117", pena: "Demissão" }, // Corrigido: transgressão, Demissão
-        { descricao: "Lei 12.527, Art. 32, I - recusar-se a fornecer informação requerida nos termos desta Lei, retardar deliberadamente o seu fornecimento ou fornecê-la intencionalmente de forma incorreta, incompleta ou imprecisa;", pena: "Suspensão1" }, // Corrigido: informação, fornecê-la, Suspensão
-        { descricao: "Lei 12.527, Art. 32, II - utilizar indevidamente, bem como subtrair, destruir, inutilizar, desfigurar, alterar ou ocultar, total ou parcialmente, informação que se encontre sob sua guarda ou a que tenha acesso ou conhecimento em razão do exercício das atribuições de cargo, emprego ou função pública;", pena: "Suspensão1" }, // Corrigido: informação, razão, exercício, atribuições, função, pública, Suspensão
-        { descricao: "Lei 12.527, Art. 32, III - agir com dolo ou má-fé na análise das solicitações de acesso à informação;", pena: "Suspensão1" }, // Corrigido: má-fé, análise, solicitações, à, informação, Suspensão
-        { descricao: "Lei 12.527, Art. 32, IV - divulgar ou permitir a divulgação ou acessar ou permitir acesso indevido à informação sigilosa ou informação pessoal;", pena: "Suspensão1" }, // Corrigido: divulgação, à, informação, informação, Suspensão
-        { descricao: "Lei 12.527, Art. 32, V - impor sigilo à informação para obter proveito pessoal ou de terceiro, ou para fins de ocultação de ato ilegal cometido por si ou por outrem;", pena: "Suspensão1" }, // Corrigido: à, informação, ocultação, Suspensão
-        { descricao: "Lei 12.527, Art. 32, VI - ocultar da revisão de autoridade superior competente informação sigilosa para beneficiar a si ou a outrem, ou em prejuízo de terceiros;", pena: "Suspensão1" }, // Corrigido: revisão, informação, prejuízo, Suspensão
-        { descricao: "Lei 12.527, Art. 32, VII - destruir ou subtrair, por qualquer meio, documentos concernentes a possíveis violações de direitos humanos por parte de agentes do Estado.", pena: "Suspensão1" } // Corrigido: possíveis, violações, Suspensão
-    ],
+        { descricao: "Lei Nº 5.810, Art. 177, I - DESCUMPRIMENTO DO DEVER: assiduidade e pontualidade;", pena: "Repreensão" },
+        { descricao: "Lei Nº 5.810, Art. 177, II - DESCUMPRIMENTO DO DEVER: urbanidade;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, III - DESCUMPRIMENTO DO DEVER: discrição;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, IV- DESCUMPRIMENTO DO DEVER: obediência às ordens superiores, exceto quando manifestamente ilegais;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, V - DESCUMPRIMENTO DO DEVER: exercício pessoal das atribuições;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, VI - DESCUMPRIMENTO DO DEVER: observância aos princípios éticos, morais, às leis e regulamentos;", pena: "Repreensão" },
+        { descricao: "Lei Nº 5.810, Art. 177, VII - DESCUMPRIMENTO DO DEVER: atualização de seus dados pessoais e de seus dependentes;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, VIII - DESCUMPRIMENTO DO DEVER: representação contra as ordens manifestamente ilegais e contra irregularidades;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, IX- DESCUMPRIMENTO DO DEVER: atender com presteza a) às requisições para a defesa judicial ou extrajudicial do Estado;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 177, IX- DESCUMPRIMENTO DO DEVER: atender com presteza b) às informações, documentos e providências solicitadas por autoridades judiciárias ou administrativas;", pena: "Repreensão" },
+        { descricao: "Lei Nº 5.810, Art. 177, IX- DESCUMPRIMENTO DO DEVER: atender com presteza c) à expedição de certidões para a defesa de direitos, para a argüição de ilegalidade ou abuso de autoridade;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, I - ACUMULAR INCONSTITUCIONALMENTE CARGOS OU EMPREGOS NA ADMINISTRAÇÃO PÚBLICA;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, II - REVELAR FATO DE QUE TEM CIÊNCIA EM RAZÃO DO CARGO, E QUE DEVE PERMANECER EM SIGILO, OU FACILITAR SUA REVELAÇÃO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, III - PLEITEAR COMO INTERMEDIÁRIO OU PROCURADOR JUNTO AO SERVIÇO PÚBLICO, EXCETO QUANDO SE TRATAR DE INTERESSE DO CÔNJUGE OU DEPENDENTE", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, IV- DEIXAR DE COMPARECER AO SERVIÇO, SEM CAUSA JUSTIFICADA, POR 30 (TRINTA) DIAS CONSECUTIVOS;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, V- VALER-SE DO EXERCÍCIO DO CARGO PARA AUFERIR OU TENTAR AUFERIR PROVEITO PESSOAL OU DE OUTREM, EM DETRIMENTO DA DIGNIDADE DA FUNÇÃO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VI - COMETER ENCARGO LEGÍTIMO DE SERVIDOR PÚBLICO À PESSOA ESTRANHA À REPARTIÇÃO, FORA DOS CASOS PREVISTOS EM LEI;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VII, A) - EXERCER ATIVIDADE EMPRESARIAL DURANTE O HORÁRIO DE EXPEDIENTE;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VII, B) - EXERCER ATIVIDADE EMPRESARIAL NO RECINTO DA REPARTIÇÃO;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VII, C) - EXERCER ATIVIDADE EMPRESARIAL UTILIZANDO RECURSOS PÚBLICOS;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VII, D) - EXERCER ATIVIDADE EMPRESARIAL EM CONFLITO DE INTERESSES COM A ADMINISTRAÇÃO;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, VIII - ACEITAR CONTRATOS COM A ADMINISTRAÇÃO ESTADUAL, QUANDO VEDADO EM LEI OU REGULAMENTO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, IX - PARTICIPAR DA GERÊNCIA OU ADMINISTRAÇÃO DE ASSOCIAÇÃO OU SOCIEDADE SUBVENCIONADA PELO ESTADO, EXCETO ENTIDADES COMUNITÁRIAS E ASSOCIAÇÃO PROFISSIONAL OU SINDICATO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, X - TRATAR DE INTERESSES PARTICULARES OU DESEMPENHAR ATIVIDADE ESTRANHA AO CARGO, NO RECINTO DA REPARTIÇÃO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XI - REFERIR-SE, DE MODO OFENSIVO, A SERVIDOR PÚBLICO, A ADMINISTRADO E A ATO DA ADMINISTRAÇÃO;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XII - UTILIZAR-SE DO ANONIMATO, OU DE PROVAS OBTIDAS ILICITAMENTE;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XIII - PERMUTAR OU AUSENTAR-SE DE SERVIÇO, SEM EXPRESSA AUTORIZAÇÃO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XIV - OMITIR-SE NO ZELO E CONSERVAÇÃO DOS BENS E DOCUMENTOS PÚBLICOS;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XV - DESRESPEITAR OU PROCRASTINAR O CUMPRIMENTO DE DECISÃO JUDICIAL OU ADMINISTRATIVA;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XVI - DEIXAR, SEM JUSTA CAUSA, DE OBSERVAR PRAZOS LEGAIS ADMINISTRATIVOS OU JUDICIAIS;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XVII - PRATICAR ATO LESIVO AO PATRIMÔNIO ESTADUAL;", pena: "Suspensão1" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XVIII - SOLICITAR, ACEITAR OU EXIGIR VANTAGEM INDEVIDA PELA ABSTENÇÃO OU PRÁTICA REGULAR DE ATO DE OFÍCIO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XIX - ACEITAR REPRESENTAÇÃO DE ESTADO ESTRANGEIRO, SEM AUTORIZAÇÃO LEGAL;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XX - EXERCER ATRIBUIÇÕES SOB AS ORDENS IMEDIATAS DE PARENTES ATÉ O SEGUNDO GRAU, SALVO EM CARGO COMISSIONADO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XXI - PRATICAR ATOS, QUE SEJAM TAMBÉM TIPIFICADOS EM LEI COMO CRIME, VITIMANDO A ADMINISTRAÇÃO PÚBLICA, SEU PATRIMÔNIO OU SERVIDORES NO EXERCÍCIO DE SUAS FUNÇÕES;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XXII - EXERCER A ADVOCACIA FORA DAS ATRIBUIÇÕES INSTITUCIONAIS, SE OCUPANTE DO CARGO INCOMPATÍVEL;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 178, XXIII - RETARDAR, INJUSTIFICADAMENTE, A NOMEAÇÃO DE CLASSIFICADO EM CONCURSO PÚBLICO;", pena: "Repreensão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, I - Prática de atos também tipificados em lei como crime, vitimando a Administração Pública, seu patrimônio, o administrado ou servidores no exercício de suas funções;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, II - Abandono de cargo;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, III - Inassiduidade habitual, configurada por faltas ao serviço, sem causa justificada, por 60 (sessenta) dias, intercaladamente, no período de 12 (doze) meses;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, IV - Prática de ato tipificado como improbidade administrativa;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, V - Incontinência Pública e conduta escandalosa, na repartição;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, VI - Insubordinação grave em serviço;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, VII - ofensa física, em serviço, a servidor ou a particular, salvo em legítima defesa própria ou de outrem;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, VIII - aplicação irregular de dinheiros públicos;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, IX - Violação de sigilo profissional, observado o disposto no § 2º do art. 177;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, X - Lesão aos cofres públicos e dilapidação do patrimônio estadual;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XI - Corrupção;", pena: "Demissão" },
+        { descricao: "Lei Nº 5.810, Art. 190, XII - Acumulação ilegal de cargos, empregos ou funções públicas;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIII - Lograr proveito pessoal ou de outrem, valendo-se do cargo, em detrimento da dignidade da função pública;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIV, A) - Exercício da atividade empresarial durante o horário de expediente;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIV, B) - Exercício da atividade empresarial no recinto da repartição;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIV, C) - Exercício da atividade empresarial utilizando recursos públicos;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIV, D) - Exercício da atividade empresarial em conflito de interesses com a administração;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XV - Atuação, como procurador ou intermediário, junto a repartições públicas, salvo quando se tratar de benefícios previdenciários ou assistenciais a parentes até o segundo grau, e de cônjuge ou companheiro;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XVI - Recebimento de propina, comissão, presente ou vantagem de qualquer espécie, em razão de suas atribuições;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XVII - Aceitação de comissão, emprego ou pensão de estado estrangeiro;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XVIII - Prática de usura sob qualquer de suas formas;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XIX - Procedimento desidioso;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XX - Utilização de pessoal ou recursos materiais de repartição em serviços ou atividades particulares;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XXI - Prática de assédio moral, assédio sexual ou discriminação;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XXII - Perda da habilitação profissional que seja requisito do seu cargo;", pena: "Demissão" }, 
+        { descricao: "Lei Nº 5.810, Art. 190, XXIII - Cometer encargo legítimo de servidor público à pessoa estranha à repartição, fora dos casos previstos em lei.", pena: "Demissão" },
+    ], 
+        
 
     init: function () {
         Calc.construirEnquadramentos();
@@ -156,10 +168,10 @@ const Calc = {
 
         inputs.each((index, input) => {
             let enquadramento = Calc.enquadramentos[$(input).val()];
-            existeDemissao = existeDemissao || enquadramento.pena == "Demissão"; // Corrigido: Demissão
-            existeSuspensao1 = existeSuspensao1 || enquadramento.pena == "Suspensão1"; // Corrigido: Suspensão
-            existeSuspensao2 = existeSuspensao2 || enquadramento.pena == "Suspensão2"; // Corrigido: Suspensão
-            existeAdvertencia = existeAdvertencia || enquadramento.pena == "Advertência"; // Corrigido: Advertência
+            existeDemissao = existeDemissao || enquadramento.pena == "Demissão"; 
+            existeSuspensao1 = existeSuspensao1 || enquadramento.pena == "Suspensão1"; 
+            existeSuspensao2 = existeSuspensao2 || enquadramento.pena == "Suspensão2"; 
+            existeAdvertencia = existeAdvertencia || enquadramento.pena == "Repreensão"; 
         });
 
         let config = {
@@ -184,8 +196,8 @@ const Calc = {
         let resultado = "";
 
         if (config.demissao) {
-            resultado = "<h3 class='text-danger'>Demissão, Destituição, Cassação de Aposentadoria ou Disponibilidade</h3>"; // Corrigido: Demissão, Destituição, Cassação
-            resultado += "<h3 class='text-danger'>Celebração de TAC impossível</h3>"; // Corrigido: Celebração, impossível
+            resultado = "<h3 class='text-warning'>Demissão/ Destituição de Cargo em Comissão Ou Função Gratificada/ Cassação de Aposentadoria ou Disponibilidade/ Conversão da Exoneração a Pedido em Demissão/ Conversão do Distrato de Servidor Temporário em Demissão e</h3>"; 
+            resultado += "<h3 class='text-danger'>Celebração de TAD impossível</h3>"; 
         } else {
             resultado = Calc.calcularAdvertenciaOuSuspensao(config);
         }
@@ -273,10 +285,10 @@ const Calc = {
 
         if (graus <= 36) {
             if (config.reincidencia) {
-                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Advertência para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de 1 dia</span></h3>`; // Corrigido: Advertência, Suspensão, reincidência
+                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Repreensão para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de 1 dia</span></h3>`; // Corrigido: Repreensão, Suspensão, reincidência
                 retorno += Calc.calcularMensagemTAC(config, 1);
             } else {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-info">Advertência</span></h3>`; // Corrigido: Advertência
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-info">Repreensão</span></h3>`; // Corrigido: Repreensão
                 retorno += Calc.calcularMensagemTAC(config, 0);
             }
         } else {
