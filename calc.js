@@ -273,7 +273,7 @@ const Calc = {
 
         if (config.suspensao2) {
             if (config.advertencia) {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral} dia(s)</span></h3>`; // Corrigido: Suspensão
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral} dia(s)</span></h3>`; 
                 retorno += Calc.calcularMensagemTAC(config, diasSuspensao2 > diasCasoGeral ? diasSuspensao2 : diasCasoGeral);
             } else {
                 retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${diasSuspensao2} dia(s)</span></h3>`; // Corrigido: Suspensão
@@ -285,14 +285,14 @@ const Calc = {
 
         if (graus <= 36) {
             if (config.reincidencia) {
-                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Repreensão para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de 1 dia</span></h3>`; // Corrigido: Repreensão, Suspensão, reincidência
+                retorno = `<h3 title="Grau: ${graus}. Penalidade convertida de Repreensão para Suspensão devido a reincidência." data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de 1 dia</span></h3>`; 
                 retorno += Calc.calcularMensagemTAC(config, 1);
             } else {
-                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-info">Repreensão</span></h3>`; // Corrigido: Repreensão
+                retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-info">Repreensão</span></h3>`; 
                 retorno += Calc.calcularMensagemTAC(config, 0);
             }
         } else {
-            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${graus - 36} dia(s)</span></h3>`; // Corrigido: Suspensão
+            retorno = `<h3 title="Grau: ${graus}" data-bs-toggle="tooltip" data-bs-placement="right"><span class="text-warning">Suspensão de ${graus - 36} dia(s)</span></h3>`; 
             retorno += Calc.calcularMensagemTAC(config, graus - 36);
         }
 
