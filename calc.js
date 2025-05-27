@@ -91,17 +91,24 @@ const Calc = {
     },
 
     onClickEnquadramento: function () {
-        let infoEnquadramentos = $("#infoEnquadramentos");
-        let inputsChecked = $('#tableEnquadramento tbody input:checked');
+    let inputsChecked = $('#tableEnquadramento tbody input:checked');
 
-        if (inputsChecked.length == 1) {
-            infoEnquadramentos.html("Enquadramentos (1 selecionado)");
-        } else {
-            infoEnquadramentos.html(`Enquadramentos (${inputsChecked.length} selecionados)`);
-        }
+    if (inputsChecked.length === 0) {
+        Calc.voltarEstadoInicial();
+        return;
+    }
 
-        Calc.atualizarCalculos();
-    },
+    let infoEnquadramentos = $("#infoEnquadramentos");
+
+    if (inputsChecked.length === 1) {
+        infoEnquadramentos.html("Enquadramentos (1 selecionado)");
+    } else {
+        infoEnquadramentos.html(`Enquadramentos (${inputsChecked.length} selecionados)`);
+    }
+
+    Calc.atualizarCalculos();
+},
+
 
     apagarSelecaoEnquadramentos: function () {
         $("#tableEnquadramento tbody input").prop("checked", false);
@@ -134,6 +141,26 @@ const Calc = {
         Calc.atualizarCalculos();
     },
 
+    voltarEstadoInicial: function () {
+    // Limpa parâmetros
+    $("#areaParametros").hide();
+    $("#areaResultado .card-body").html(`<h3>Selecione os enquadramentos para início dos cálculos</h3>`);
+
+    // Atualiza contador de enquadramentos
+    $("#infoEnquadramentos").html("Enquadramentos (0 selecionados)");
+
+    // Limpa tooltips
+    $(".tooltip").remove();
+
+    // Reseta visualmente os sliders e qualificadores
+    Calc.resetarCriteriosQueAumentamGrau();
+    Calc.resetarCriteriosQueDiminuem();
+
+    // Desmarca checkboxes
+    $("#tableEnquadramento tbody input[type='checkbox']").prop("checked", false);
+},
+
+
     construirEnquadramentos: function () {
         let tableBody = $('#tableEnquadramento tbody');
         Calc.enquadramentos.forEach((e, i) => {
@@ -145,15 +172,16 @@ const Calc = {
     },
 
     atualizarCalculos: function () {
-        let inputs = $('#tableEnquadramento tbody tr td:nth-child(1) input:checked');
+    let inputs = $('#tableEnquadramento tbody tr td:nth-child(1) input:checked');
 
-        if (inputs.length > 0) {
-            Calc.calcular(inputs);
-        } else {
-            $('#areaParametros').hide();
-            $('#areaResultado').html(`<h3>Selecione os enquadramentos para início dos cálculos</h3>`); // Corrigido: início, cálculos
-        }
-    },
+    if (inputs.length > 0) {
+        $('#areaParametros').show(); // Garante que os parâmetros reapareçam
+        Calc.calcular(inputs);
+    } else {
+        Calc.voltarEstadoInicial();
+    }
+},
+
 
     calcular: function (inputs) {
         let existeDemissao = false;
