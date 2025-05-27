@@ -142,21 +142,21 @@ const Calc = {
     },
 
     voltarEstadoInicial: function () {
-    // Limpa parâmetros
+    
     $("#areaParametros").hide();
     $("#areaResultado .card-body").html(`<h3>Selecione os enquadramentos para início dos cálculos</h3>`);
 
-    // Atualiza contador de enquadramentos
+    
     $("#infoEnquadramentos").html("Enquadramentos (0 selecionados)");
 
-    // Limpa tooltips
+    
     $(".tooltip").remove();
 
-    // Reseta visualmente os sliders e qualificadores
+    
     Calc.resetarCriteriosQueAumentamGrau();
     Calc.resetarCriteriosQueDiminuem();
 
-    // Desmarca checkboxes
+    
     $("#tableEnquadramento tbody input[type='checkbox']").prop("checked", false);
 },
 
@@ -175,7 +175,7 @@ const Calc = {
     let inputs = $('#tableEnquadramento tbody tr td:nth-child(1) input:checked');
 
     if (inputs.length > 0) {
-        $('#areaParametros').show(); // Garante que os parâmetros reapareçam
+        $('#areaParametros').show(); 
         Calc.calcular(inputs);
     } else {
         Calc.voltarEstadoInicial();
@@ -262,13 +262,13 @@ const Calc = {
         let retorno = "";
 
         if (Calc.tacNaoPodeSerCelebrado(diasSuspensao) || config.reincidencia || config.penalidadeVigente || config.apenadoDisciplinarmenteUltimos12Meses || config.tacPendenteCumprimento) {
-            retorno = `<h3><span class="text-danger">Celebração de TAD impossível</span></h3>`; // Corrigido: Celebração, impossível
+            retorno = `<h3><span class="text-danger">Celebração de TAD impossível</span></h3>`; 
         } else {
-            retorno = `<h3><span class="text-success">Celebração de TAD possível</span></h3>`; // Corrigido: Celebração, possível
+            retorno = `<h3><span class="text-success">Celebração de TAD possível</span></h3>`; 
         }
 
-        retorno += `<p style="text-align: center; font-size: 0.9rem;" class="mt-2">A celebração de TAD deve observar as condições estabelecidas na PORTARIA NORMATIVA CGU Nº 27, DE 11 DE OUTUBRO DE 2022. 
-        Clique <a href='https://in.gov.br/en/web/dou/-/portaria-normativa-cgu-n-27-de-11-de-outubro-de-2022-435868760' target='blank'>aqui</a> para acessar.<p>`; // Corrigido: celebração, condições, Nº
+        retorno += `<p style="text-align: center; font-size: 0.9rem;" class="mt-2">A celebração de TAD deve observar as condições estabelecidas na LEI Nº 5.810, DE 24 DE JANEIRO DE 1994. 
+        Clique <a href='https://lex.pge.pa.gov.br/#/texto-integral/979' target='blank'>aqui</a> para acessar.<p>`; // Corrigido: celebração, condições, Nº
 
         return retorno;
     },
